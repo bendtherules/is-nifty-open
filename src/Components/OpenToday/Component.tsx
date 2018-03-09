@@ -21,7 +21,7 @@ export class OpenToday extends React.Component<{
     }
 
     processAnswer(): void {
-        var todayDateTime = Moment("2018-03-11");
+        var todayDateTime = Moment();
 
         {
             const matchingHoliday = Linq
