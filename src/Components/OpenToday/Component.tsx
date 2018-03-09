@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as Moment from 'moment';
 import * as Linq from 'linq';
+import * as classnames from 'classnames';
+import "./Component.css";
 import { Holiday, HolidayList, getWeekendHoliday } from '../../Data/index';
 import { ClosedReason } from '../ClosedReason';
 
@@ -29,7 +31,7 @@ export class OpenToday extends React.Component<{
                 .firstOrDefault(
                     (eachHoliday, _tmp) => todayDateTime.isSame(eachHoliday.Date, 'day')
                 );
-    
+
             if (matchingHoliday === null) {
                 this.answer = { open: true, holiday: undefined };
             } else {
@@ -48,13 +50,20 @@ export class OpenToday extends React.Component<{
 
     render() {
         const answerBoolean = (this.question === OpenToday.OpenOrClose.Open ? this.answer.open : !this.answer.open);
+        const bgColorClass = (this.answer.open ? "green" : "red");
 
         return (
-            <div className="OpenToday">
-                <div className="question">Is Nifty50 (NSE) {this.question} today?</div>
+            <div className={classnames([bgColorClass, "OpenToday"])} >
+                <div className="question">
+                    <span>
+                        Is Nifty50 (NSE) {this.question} today?
+                    </span>
+                </div>
                 <div className="answerComposite">
                     <div className="answerBoolean">
-                        {answerBoolean ? "Yes" : "No"}
+                        <span>
+                            {answerBoolean ? "Yes" : "No"}
+                        </span>
                     </div>
 
                     {!this.answer.open ? <ClosedReason holiday={this.answer.holiday as Holiday} /> : undefined}
