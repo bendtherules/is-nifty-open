@@ -1,0 +1,1 @@
+export { ClosedReason } from './Component';
