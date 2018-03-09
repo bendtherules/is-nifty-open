@@ -1,0 +1,1 @@
+export { IsNiftyOpenApp } from './App';
