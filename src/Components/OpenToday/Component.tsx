@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Moment from 'moment';
+import * as moment from 'moment-timezone';
 import * as Linq from 'linq';
 import * as classnames from 'classnames';
 import "./Component.css";
@@ -22,14 +22,28 @@ export class OpenToday extends React.Component<{
         this.processAnswer();
     }
 
+    checkSameDayInSameTZ(moment1: moment.Moment, moment2: moment.Moment, raiseErrorTZMismatch: boolean = true) {
+        // tslint:disable-next-line:triple-equals
+        if (raiseErrorTZMismatch && (moment1.tz() != moment2.tz())) {
+            throw new Error("Timezones don't match");
+        }
+
+        // tslint:disable-next-line:triple-equals
+        return (moment1.startOf("day").format() == moment2.startOf("day").format());
+    }
+
+    createTodayDateInIndiaTZ(): moment.Moment {
+        return moment.tz(moment.tz.guess()).tz("Asia/Kolkata");
+    }
+
     processAnswer(): void {
-        var todayDateTime = Moment();
+        var todayDateInIndiaTZ = this.createTodayDateInIndiaTZ();
 
         {
             const matchingHoliday = Linq
                 .from<Holiday>(this.allHolidays)
                 .firstOrDefault(
-                    (eachHoliday, _tmp) => todayDateTime.isSame(eachHoliday.Date, 'day')
+                    (eachHoliday, _tmp) => this.checkSameDayInSameTZ(todayDateInIndiaTZ, eachHoliday.Date)
                 );
 
             if (matchingHoliday === null) {
@@ -40,7 +54,7 @@ export class OpenToday extends React.Component<{
         }
 
         {
-            const weekendHoliday = getWeekendHoliday(todayDateTime);
+            const weekendHoliday = getWeekendHoliday(todayDateInIndiaTZ);
 
             if (typeof weekendHoliday !== "undefined") {
                 this.answer = { open: false, holiday: weekendHoliday };
@@ -60,14 +74,16 @@ export class OpenToday extends React.Component<{
                     </span>
                 </div>
                 <div className="answerComposite">
-                    <div className="answerBoolean">
-                        <span>
-                            {answerBoolean ? "Yes" : "No"}
-                        </span>
+                    <div className="answerComposite-inner">
+                        <div className="answerBoolean">
+                            <span>
+                                {answerBoolean ? "Yes" : "No"}
+                            </span>
+                        </div>
+                        <div className="answerReason">
+                            {!this.answer.open ? <ClosedReason holiday={this.answer.holiday as Holiday} /> : undefined}
+                        </div>
                     </div>
-
-                    {!this.answer.open ? <ClosedReason holiday={this.answer.holiday as Holiday} /> : undefined}
-
                 </div>
             </div>
         );

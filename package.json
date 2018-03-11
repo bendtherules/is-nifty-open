@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "@types/classnames": "^2.2.3",
+    "@types/moment-timezone": "^0.5.4",
     "classnames": "^2.2.5",
     "linq": "^3.0.9",
     "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts-ts": "2.13.0"
