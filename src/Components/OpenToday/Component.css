@@ -1,8 +1,9 @@
+@import "../../Utils/utils.css";
 .OpenToday {
     width: 100%;
     height: 100%;
-
     font-size: 4em;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 .OpenToday.green {
@@ -16,39 +17,47 @@
 .OpenToday .question, .OpenToday .answerComposite {
     padding-top: 5%;
     padding-bottom: 5%;
-
-    color: whitesmoke;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .OpenToday .question {
     float: left;
-
     width: 40%;
     height: 100%;
-
-    padding-left: 4%;
-    padding-right: 4%;
-
     position: relative;
-
-    border-right: 5px solid white;
+    border-right: 5px solid rgba(255, 255, 255, 0.5);
 }
 
 .OpenToday .question span {
-  display: block;
-  position: absolute;
-
-  text-align: right;
-
-  top: 40%;
-  right: 1em;
-  transform: translate(0%, -50%);
+    display: block;
+    position: absolute;
+    text-align: right;
+    top: 50%;
+    right: 0.5em;
+    transform: translate(0%, -50%);
 }
-
 
 .OpenToday .answerComposite {
     float: right;
-
     width: 60%;
     height: 100%;
+    position: relative;
+}
+
+.OpenToday .answerComposite-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.OpenToday .answerComposite .answerBoolean {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.OpenToday .answerComposite .answerReason {
+    opacity: 0.85;
+
+    font-size: 0.85em;
 }
