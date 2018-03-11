@@ -70,7 +70,7 @@ export class OpenToday extends React.Component<{
             <div className={classnames([bgColorClass, "OpenToday"])} >
                 <div className="question">
                     <span>
-                        Is Nifty50 (NSE) {this.question} today?
+                        Is Nifty50 {this.question} today?
                     </span>
                 </div>
                 <div className="answerComposite">
