@@ -20,4 +20,5 @@ Development to-dos are tracked in `./todo.md` file.
 Overall goals are :
 1. Make 1 (existing) + 2 panels to show tomorrow's info and next opening/closing day.
 2. Click on tomorrow's panel to load that day in main panel and update information in small panels with respect to tomorrow. (Route to any day in the financial year)
-1. Make offline-first and update data when connected.
+3. Make offline-first and update data when connected.
+4. Show market timings also (??) - hours to open/close
