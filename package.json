@@ -16,6 +16,8 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "buildWeb": "react-scripts-ts build && mv ./build ./docs",
+    "buildWeb-win": "react-scripts-ts build && powershell.exe \"Copy-Item -Path ./build/*  -Recurse -force -Destination ./docs\"",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
