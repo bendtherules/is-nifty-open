@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Holiday } from '../../Data/index';
+import './Component.css';
 
 type ObjectWithHoliday = { holiday: Holiday };
 
@@ -13,7 +14,7 @@ export class ClosedReason extends React.Component<ObjectWithHoliday, {}> {
 
     render() {
         return (
-            <div className="answerReason">
+            <div className="ClosedReason">
                 <div className="holidayPrefixText">
                     Closed due to
                         </div>
