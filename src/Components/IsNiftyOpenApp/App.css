@@ -1,3 +1,41 @@
+/* Make responsive by adjusting master text-size em */
+
+@media screen and (min-device-width: 1441px) {
+  .App {
+    font-size: 2.25em;
+  }
+}
+
+@media screen and (min-device-width: 1025px) and (max-device-width: 1440px) {
+  .App {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+  .App {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-device-width: 601px) and (max-device-width: 768px) {
+  .App {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (min-device-width: 426px) and (max-device-width: 600px) {
+  .App {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 425px) {
+  .App {
+    font-size: 0.45em;
+  }
+}
+
 .App {
   width: 100%;
   height: 100%;

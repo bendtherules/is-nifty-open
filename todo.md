@@ -3,7 +3,7 @@
 3. [X] Add favicon, title, meta
 4. [X] Build at netlify.com
 8. [X] Host at isnifty.com
-3. Make responsive - text
+3. [X] Make responsive - text
 4. Fix favicon not coming (look into serviceworker)
 2. Make opentoday to openXDay and move current day logic outside it
 4. Add 2 more bottom sections
