@@ -1,6 +1,6 @@
 1. [X] Make time local
 2. [X] Fix Readme
-3. Add favicon
+3. [X] Add favicon, title, meta
 4. Build at netlify.com
 8. Host at isnifty.com
 3. Make responsive - text
