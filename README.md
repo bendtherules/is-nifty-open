@@ -8,7 +8,9 @@ Is Nifty Open is a small utility webapp to check if Nifty50 (NSE) market is open
 
 Sometimes when the prices don't move after opening at 9:15AM, I get confused whether it is a trading holiday (best case) or my network or trading platform is having problems.
 
-If you check for NSE trading holidays, Google doesn't give any instant answer and points to the official pdf notice. You need to download and open it, check todays date against the list to finally get the information.
+If you check for "Is nifty (or nse) open today (or some date here)" on Google, it
+* either doesn't give any instant answer and points to the official pdf notice. You need to download it, check todays date against the list to get the information.
+* or shows unreliable information like [Check for 30th March](https://www.google.co.in/search?q=is+nse+open+on+30th+march+2018). [Technically, NSE offices can remain open even if its a trading holiday - so its hard to find out the latter]
 
 Its supposed to be a instant solution to this very small but repeating problem.
 
