@@ -1,6 +1,7 @@
 1. [X] Make time local
 2. [X] Fix Readme
 3. Add favicon
+4. Build at netlify.com
 8. Host at isnifty.com
 3. Make responsive - text
 2. Make opentoday to openXDay and move current day logic outside it
