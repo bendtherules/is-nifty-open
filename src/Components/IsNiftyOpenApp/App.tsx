@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { OpenToday } from '../OpenToday';
+import { OpenXDay } from '../OpenXDay';
 import { allHolidays } from '../../Data';
 
 class IsNiftyOpenApp extends React.Component {
@@ -8,7 +8,7 @@ class IsNiftyOpenApp extends React.Component {
     return (
       <div className="App">
         <div className="OpenToday-container">
-          <OpenToday question={OpenToday.OpenOrClose.Open} allHolidays={allHolidays} />
+          <OpenXDay question={OpenXDay.OpenOrClose.Open} allHolidays={allHolidays} />
         </div>
       </div>
     );

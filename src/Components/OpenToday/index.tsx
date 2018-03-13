@@ -1,1 +1,0 @@
-export { OpenToday } from './Component';

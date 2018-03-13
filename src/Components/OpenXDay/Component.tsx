@@ -6,15 +6,15 @@ import "./Component.css";
 import { Holiday, HolidayList, getWeekendHoliday } from '../../Data/index';
 import { ClosedReason } from '../ClosedReason';
 
-export class OpenToday extends React.Component<{
-    question: OpenToday.OpenOrClose,
+export class OpenXDay extends React.Component<{
+    question: OpenXDay.OpenOrClose,
     allHolidays: HolidayList
 }, {}> {
-    question: OpenToday.OpenOrClose;
+    question: OpenXDay.OpenOrClose;
     allHolidays: HolidayList;
     answer: { open: boolean, holiday: Holiday | undefined };
 
-    constructor(props: { question: OpenToday.OpenOrClose, allHolidays: HolidayList }) {
+    constructor(props: { question: OpenXDay.OpenOrClose, allHolidays: HolidayList }) {
         super(props);
         this.question = props.question;
         this.allHolidays = props.allHolidays;
@@ -63,7 +63,7 @@ export class OpenToday extends React.Component<{
     }
 
     render() {
-        const answerBoolean = (this.question === OpenToday.OpenOrClose.Open ? this.answer.open : !this.answer.open);
+        const answerBoolean = (this.question === OpenXDay.OpenOrClose.Open ? this.answer.open : !this.answer.open);
         const bgColorClass = (this.answer.open ? "green" : "red");
 
         return (
@@ -90,7 +90,7 @@ export class OpenToday extends React.Component<{
     }
 }
 
-export module OpenToday {
+export module OpenXDay {
     export enum OpenOrClose {
         Open = 'open',
         Close = 'closed'
