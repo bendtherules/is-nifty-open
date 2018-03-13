@@ -6,23 +6,20 @@ import "./Component.css";
 import { Holiday, HolidayList, getWeekendHoliday } from '../../Data/index';
 import { ClosedReason } from '../ClosedReason';
 
-export class OpenXDay extends React.Component<{
-    question: OpenXDay.OpenOrClose,
-    allHolidays: HolidayList
-}, {}> {
+export interface OpenXDayProps {
     question: OpenXDay.OpenOrClose;
+    xDay: moment.Moment;
     allHolidays: HolidayList;
+}
+
+export class OpenXDay extends React.Component<OpenXDayProps, {}> {
+    question: OpenXDay.OpenOrClose;
+    xDay: moment.Moment;
+    allHolidays: HolidayList;
+
     answer: { open: boolean, holiday: Holiday | undefined };
 
-    constructor(props: { question: OpenXDay.OpenOrClose, allHolidays: HolidayList }) {
-        super(props);
-        this.question = props.question;
-        this.allHolidays = props.allHolidays;
-
-        this.processAnswer();
-    }
-
-    checkSameDayInSameTZ(moment1: moment.Moment, moment2: moment.Moment, raiseErrorTZMismatch: boolean = true) {
+    static checkSameDayInSameTZ(moment1: moment.Moment, moment2: moment.Moment, raiseErrorTZMismatch: boolean = true) {
         // tslint:disable-next-line:triple-equals
         if (raiseErrorTZMismatch && (moment1.tz() != moment2.tz())) {
             throw new Error("Timezones don't match");
@@ -32,18 +29,21 @@ export class OpenXDay extends React.Component<{
         return (moment1.startOf("day").format() == moment2.startOf("day").format());
     }
 
-    createTodayDateInIndiaTZ(): moment.Moment {
-        return moment.tz(moment.tz.guess()).tz("Asia/Kolkata");
+    constructor(props: OpenXDayProps) {
+        super(props);
+        this.question = props.question;
+        this.xDay = props.xDay;
+        this.allHolidays = props.allHolidays;
+
+        this.processAnswer();
     }
 
     processAnswer(): void {
-        var todayDateInIndiaTZ = this.createTodayDateInIndiaTZ();
-
         {
             const matchingHoliday = Linq
                 .from<Holiday>(this.allHolidays)
                 .firstOrDefault(
-                    (eachHoliday, _tmp) => this.checkSameDayInSameTZ(todayDateInIndiaTZ, eachHoliday.Date)
+                    (eachHoliday, _tmp) => OpenXDay.checkSameDayInSameTZ(this.xDay, eachHoliday.Date)
                 );
 
             if (matchingHoliday === null) {
@@ -54,7 +54,7 @@ export class OpenXDay extends React.Component<{
         }
 
         {
-            const weekendHoliday = getWeekendHoliday(todayDateInIndiaTZ);
+            const weekendHoliday = getWeekendHoliday(this.xDay);
 
             if (typeof weekendHoliday !== "undefined") {
                 this.answer = { open: false, holiday: weekendHoliday };
