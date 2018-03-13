@@ -5,8 +5,9 @@
 8. [X] Host at isnifty.com
 3. [X] Make responsive - text
 4. Fix favicon not coming (look into serviceworker)
-2. Make opentoday to openXDay and move current day logic outside it
+2. [X] Make opentoday to openXDay and move current day logic outside it
 4. Add 2 more bottom sections
+5. Fix filename improper casing
 5. Load data from backend
 6. Add tests
 7. Make offline-first
