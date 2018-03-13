@@ -1,27 +1,27 @@
 @import "../../Utils/utils.css";
 
-.OpenToday {
+.OpenXDay {
     width: 100%;
     height: 100%;
     font-size: 4em;
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-.OpenToday.green {
+.OpenXDay.green {
     background-color: #2ECC40;
 }
 
-.OpenToday.red {
+.OpenXDay.red {
     background-color: #FF4136;
 }
 
-.OpenToday .question, .OpenToday .answerComposite {
+.OpenXDay .question, .OpenXDay .answerComposite {
     padding-top: 5%;
     padding-bottom: 5%;
     color: rgba(255, 255, 255, 0.75);
 }
 
-.OpenToday .question {
+.OpenXDay .question {
     float: left;
     width: 40%;
     height: 100%;
@@ -29,7 +29,7 @@
     border-right: 5px solid rgba(255, 255, 255, 0.5);
 }
 
-.OpenToday .question span {
+.OpenXDay .question span {
     display: block;
     position: absolute;
     text-align: right;
@@ -38,14 +38,14 @@
     transform: translate(0%, -50%);
 }
 
-.OpenToday .answerComposite {
+.OpenXDay .answerComposite {
     float: right;
     width: 60%;
     height: 100%;
     position: relative;
 }
 
-.OpenToday .answerComposite-inner {
+.OpenXDay .answerComposite-inner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -53,11 +53,11 @@
     text-align: center;
 }
 
-.OpenToday .answerComposite .answerBoolean {
+.OpenXDay .answerComposite .answerBoolean {
     color: rgba(255, 255, 255, 0.85);
 }
 
-.OpenToday .answerComposite .answerReason {
+.OpenXDay .answerComposite .answerReason {
     opacity: 0.85;
 
     font-size: 0.85em;

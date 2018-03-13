@@ -67,7 +67,7 @@ export class OpenXDay extends React.Component<{
         const bgColorClass = (this.answer.open ? "green" : "red");
 
         return (
-            <div className={classnames([bgColorClass, "OpenToday"])} >
+            <div className={classnames([bgColorClass, "OpenXDay"])} >
                 <div className="question">
                     <span>
                         Is Nifty50 {this.question} today?

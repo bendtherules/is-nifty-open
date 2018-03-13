@@ -7,7 +7,7 @@ class IsNiftyOpenApp extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="OpenToday-container">
+        <div className="OpenXDay-container">
           <OpenXDay question={OpenXDay.OpenOrClose.Open} allHolidays={allHolidays} />
         </div>
       </div>
