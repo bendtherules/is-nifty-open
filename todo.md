@@ -7,7 +7,7 @@
 4. Fix favicon not coming (look into serviceworker)
 2. [X] Make opentoday to openXDay and move current day logic outside it
 4. Add 2 more bottom sections
-    1. Next day section
+    1. Next day section (Use mini view of OpenXDay ??)
     2. Next change day section
 9. Implement client-side routing
     1. Read main section xDay from URL route
