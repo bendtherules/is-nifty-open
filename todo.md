@@ -10,6 +10,7 @@
     1. Next day section (Use mini view of OpenXDay ??)
     2. Next change day section
 9. Implement client-side routing
+    1. [X] Route for open/close 
     1. Read main section xDay from URL route
     2. Bottom section click to main section flow using routing
 5. Allow date picker to go to particular date
