@@ -58,7 +58,7 @@
 }
 
 .App .OpenXDayMini, .App .NextOpenCloseMini {
-  border-top: 5px solid rgba(255, 255, 255, 0.75);
+  border-top: 5px solid rgba(255, 255, 255, 0.6);
 }
 
 .App .OpenXDay-container {
@@ -73,7 +73,7 @@
 }
 
 .App .OpenXPlusOneDay-container .OpenXDayMini {
-  border-right: 5px solid rgba(255, 255, 255, 0.5);
+  border-right: 5px solid rgba(255, 255, 255, 0.6);
 }
 
 .App .NextOpenClose-container {
