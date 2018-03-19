@@ -1,0 +1,1 @@
+export { OpenXDayMini } from './Component';

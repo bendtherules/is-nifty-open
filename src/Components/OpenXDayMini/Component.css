@@ -1,0 +1,16 @@
+@import "../../Utils/utils.css";
+
+.OpenXDayMini {
+    width: 100%;
+    height: 100%;
+    font-size: 4em;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.OpenXDayMini.green {
+    background-color: #2ECC40;
+}
+
+.OpenXDayMini.red {
+    background-color: #FF4136;
+}

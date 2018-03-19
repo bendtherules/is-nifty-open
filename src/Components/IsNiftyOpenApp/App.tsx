@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import { OpenXDay } from '../OpenXDay';
+import { OpenXDayMini } from '../OpenXDayMini';
 import { allHolidays } from '../../Data';
 import { Utils } from "../../Utils";
 
@@ -20,13 +21,25 @@ class IsNiftyOpenApp extends React.Component {
       question = OpenXDay.OpenOrClose.Close;
     }
 
+    const xDay = Utils.createTodayDateInIndiaTZ();
+    const XPlusOneDay = xDay.add(1, "d");
+
     return (
-      <div className="OpenXDay-container">
-        <OpenXDay
-          question={question}
-          xDay={Utils.createTodayDateInIndiaTZ()}
-          allHolidays={allHolidays}
-        />
+      <div className="IsNiftyOpenApp">
+        <div className="OpenXDay-container">
+          <OpenXDay
+            question={question}
+            xDay={xDay}
+            allHolidays={allHolidays}
+          />
+        </div>
+        <div className="OpenXPlusOneDay-container">
+          <OpenXDayMini
+            xDay={XPlusOneDay}
+            dateDescription={"tomorrow"}
+            allHolidays={allHolidays}
+          />
+        </div>
       </div>
     );
   }
