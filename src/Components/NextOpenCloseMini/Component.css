@@ -1,0 +1,26 @@
+@import "../../Utils/utils.css";
+.NextOpenCloseMini {
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    background-color: rgba(0, 0, 0, 0.75);
+    
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 2em;
+    position: relative;
+}
+
+@media screen and (max-width: 600px) {
+    .NextOpenCloseMini {
+        font-size: 3em;
+    }
+}
+
+.NextOpenCloseMini-inner {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+}

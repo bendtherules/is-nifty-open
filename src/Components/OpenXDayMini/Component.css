@@ -1,16 +1,34 @@
 @import "../../Utils/utils.css";
-
 .OpenXDayMini {
     width: 100%;
     height: 100%;
-    font-size: 4em;
     background-color: rgba(0, 0, 0, 0.75);
+
+    color: rgba(255, 255, 255, 0.60);
+    
+    font-size: 2em;
+    position: relative;
 }
 
-.OpenXDayMini.green {
-    background-color: #2ECC40;
+@media screen and (max-width: 600px) {
+    .OpenXDayMini {
+        font-size: 3em;
+    }
 }
 
-.OpenXDayMini.red {
-    background-color: #FF4136;
+.OpenXDayMini-inner {
+    position: absolute;
+    text-align: right;
+    right: 1em;
+    top: 50%;
+    width: 80%;
+    transform: translate(0, -50%);
+}
+
+.OpenXDayMini .green-text {
+    color: rgba(46, 204, 64, 0.75);
+}
+
+.OpenXDayMini .red-text {
+    color: rgba(255, 64, 54, 0.75);
 }

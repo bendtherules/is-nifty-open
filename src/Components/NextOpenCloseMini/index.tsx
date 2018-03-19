@@ -1,0 +1,1 @@
+export { NextOpenCloseMini } from './Component';

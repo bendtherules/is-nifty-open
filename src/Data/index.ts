@@ -53,7 +53,7 @@ export function isWeekend(date: moment.Moment): boolean {
     }
 }
 
-export function getWeekendHoliday(date: moment.Moment): Holiday | undefined {
+export function getWeekendHolidayOnDate(date: moment.Moment): Holiday | undefined {
     if (isWeekend(date)) {
         const dateWeekDay = date.isoWeekday();
         return { "Description": "Weekend", "Date": date, "Day": ISOWeekDay[dateWeekDay] };
