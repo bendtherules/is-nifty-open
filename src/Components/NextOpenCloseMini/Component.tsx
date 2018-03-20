@@ -23,7 +23,8 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
         this.openOrClose = props.openOrClose;
         this.allHolidays = props.allHolidays;
 
-        this.nextOpenOrCloseDate = Utils.findNextOpenOrCloseFromDate(this.xDay, this.allHolidays, this.openOrClose);
+        this.nextOpenOrCloseDate = Utils.findNextOpenOrEventCloseFromDate(
+            this.xDay, this.allHolidays, this.openOrClose);
     }
 
     getOpeningClosingString() {

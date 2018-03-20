@@ -81,7 +81,7 @@ export class Utils {
         }
     }
 
-    static findNextOpenOrCloseFromDate(
+    static findNextOpenOrEventCloseFromDate(
         xDay: moment.Moment,
         allHolidays: HolidayList,
         openOrClose: OpenOrClose): moment.Moment | undefined {
@@ -89,13 +89,13 @@ export class Utils {
         let currentDay = xDay.clone().add(1, "day");
 
         while (this.checkSameYearInSameTZ(currentDay, xDay)) {
-            var holidayAnswerOnCurrentDay = this.getHolidayAnswerOnDate(currentDay, allHolidays);
+            var holidayOnCurrentDay = this.getEventHolidayOnDate(currentDay, allHolidays);
 
-            if ((openOrClose === OpenOrClose.Open) && holidayAnswerOnCurrentDay.open) {
+            if ((openOrClose === OpenOrClose.Open) && (holidayOnCurrentDay === undefined)) {
                 return currentDay;
             }
 
-            if ((openOrClose === OpenOrClose.Close) && !holidayAnswerOnCurrentDay.open) {
+            if ((openOrClose === OpenOrClose.Close) && (holidayOnCurrentDay !== undefined)) {
                 return currentDay;
             }
 
