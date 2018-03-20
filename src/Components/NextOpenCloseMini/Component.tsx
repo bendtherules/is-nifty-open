@@ -33,11 +33,11 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
 
     renderDate(): JSX.Element[] {
         const tmpNextDate = this.nextOpenOrCloseDate as moment.Moment;
-        var nextDateString = tmpNextDate.format("DD-MM-YYYY");
+        var nextDateString = tmpNextDate.from(this.xDay);
         return [
             (
                 <div className="openCloseDecription" key="title">
-                    Next {this.getOpeningClosingString()} on
+                    Next {this.getOpeningClosingString()}
                 </div>
             ),
             (
