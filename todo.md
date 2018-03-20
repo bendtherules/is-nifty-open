@@ -21,4 +21,5 @@
 5. Load data from backend
 6. Add tests
 7. Make offline-first
+8. Add browser notification for closed days
 11. Make layout change (horizontal/vertical) depending on width and height
