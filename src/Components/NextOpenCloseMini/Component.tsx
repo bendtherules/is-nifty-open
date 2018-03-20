@@ -31,13 +31,17 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
         return this.openOrClose === OpenOrClose.Open ? "opening" : "closing";
     }
 
+    getOpeningClosingClassName() {
+        return this.openOrClose === OpenOrClose.Open ? "green-text" : "red-text";
+    }
+
     renderDate(): JSX.Element[] {
         const tmpNextDate = this.nextOpenOrCloseDate as moment.Moment;
         var nextDateString = tmpNextDate.from(this.xDay);
         return [
             (
                 <div className="openCloseDecription" key="title">
-                    Next {this.getOpeningClosingString()}
+                    Next <span className={this.getOpeningClosingClassName()}>{this.getOpeningClosingString()}</span>
                 </div>
             ),
             (
