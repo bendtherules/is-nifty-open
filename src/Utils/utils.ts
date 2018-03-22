@@ -93,13 +93,14 @@ export class Utils {
         let currentDay = xDay.clone().add(1, "day");
 
         while (this.checkSameYearInSameTZ(currentDay, xDay)) {
-            var holidayOnCurrentDay = this.getEventHolidayOnDate(currentDay, allHolidays);
+            var eventHolidayOnCurrentDay: boolean = this.getEventHolidayOnDate(currentDay, allHolidays) !== undefined;
+            var openOnCurrentDay: boolean = this.getHolidayAnswerOnDate(currentDay, allHolidays).open;
 
-            if ((openOrClose === OpenOrClose.Open) && (holidayOnCurrentDay === undefined)) {
+            if ((openOrClose === OpenOrClose.Open) && (openOnCurrentDay)) {
                 return currentDay;
             }
 
-            if ((openOrClose === OpenOrClose.Close) && (holidayOnCurrentDay !== undefined)) {
+            if ((openOrClose === OpenOrClose.Close) && (eventHolidayOnCurrentDay)) {
                 return currentDay;
             }
 
