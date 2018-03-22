@@ -28,7 +28,7 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
     }
 
     getOpeningClosingString() {
-        return this.openOrClose === OpenOrClose.Open ? "opening" : "closing";
+        return this.openOrClose === OpenOrClose.Open ? "opening" : "holiday";
     }
 
     getOpeningClosingClassName() {
