@@ -21,7 +21,7 @@ class IsNiftyOpenApp extends React.Component {
     return isTodayEventHoliday ? OpenOrClose.Open : OpenOrClose.Close;
   }
 
-  renderOpenXDay(questionString: OpenOrCloseOrClosed): React.ReactElement<{}> {
+  renderAllPanels(questionString: OpenOrCloseOrClosed, dateText: string): React.ReactElement<{}> {
     var question: OpenOrClose;
     if (questionString === OpenOrCloseOrClosed.Open) {
       question = OpenOrClose.Open;
@@ -29,8 +29,44 @@ class IsNiftyOpenApp extends React.Component {
       question = OpenOrClose.Close;
     }
 
-    const xDay = Utils.createTodayDateInIndiaTZ();
-    const xPlusOneDay = xDay.clone().add(1, "d");
+    let xDay: moment.Moment, xPlusOneDay: moment.Moment;
+    {
+      const enum DateNames {
+        today = "today",
+        tomorrow = "tomorrow",
+        yesterday = "yesterday",
+      }
+
+      if (dateText === undefined) {
+        return this.redirectToOpenToday(question);
+      }
+      dateText = dateText.toLowerCase();
+
+      switch (dateText) {
+        case DateNames.today:
+          xDay = Utils.createTodayDateInIndiaTZ();
+          break;
+
+        case DateNames.tomorrow:
+          xDay = Utils.createTodayDateInIndiaTZ().add(1, "d");
+          break;
+
+        case DateNames.yesterday:
+          xDay = Utils.createTodayDateInIndiaTZ().subtract(1, "d");
+          break;
+
+        default:
+          let possiblyXDay = Utils.createSomeDateInIndiaTZ(dateText);
+          if (possiblyXDay.isValid()) {
+            xDay = possiblyXDay;
+          } else {
+            return this.redirectToOpenToday(question);
+          }
+          break;
+      }
+
+    }
+    xPlusOneDay = xDay.clone().add(1, "d");
 
     return (
       <div className="IsNiftyOpenApp">
@@ -62,16 +98,25 @@ class IsNiftyOpenApp extends React.Component {
       </div>
     );
   }
+
+  redirectToOpenToday(question: OpenOrClose = OpenOrClose.Open) {
+    return (<Redirect to={`/${question}/today`} />);
+  }
+
   render() {
     return (
       <div className="App">
         <Switch>
           <Route
             exact={true}
-            path='/:openOrClosed(open|close[d]?)'
-            render={(props) => { return this.renderOpenXDay(props.match.params.openOrClosed); }}
+            path='/:openOrClosed(open|close[d]?)/:dateText?'
+            render={(props) => {
+              return this.renderAllPanels(
+                props.match.params.openOrClosed,
+                props.match.params.dateText);
+            }}
           />
-          <Redirect to="/open" />
+          {this.redirectToOpenToday()}
         </Switch>
       </div>
     );

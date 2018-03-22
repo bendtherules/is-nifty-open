@@ -21,6 +21,10 @@ export class Utils {
         return moment.tz(moment.tz.guess()).tz("Asia/Kolkata");
     }
 
+    static createSomeDateInIndiaTZ(dateString: string): moment.Moment {
+        return moment.tz(dateString, moment.tz.guess()).tz("Asia/Kolkata");
+    }
+
     static checkSameDayInSameTZ(moment1: moment.Moment, moment2: moment.Moment, raiseErrorTZMismatch: boolean = true) {
         // tslint:disable-next-line:triple-equals
         if (raiseErrorTZMismatch && (moment1.tz() != moment2.tz())) {
