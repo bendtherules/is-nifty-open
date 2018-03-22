@@ -2,7 +2,7 @@
   "name": "is-nifty-open",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "isnifty.com/open/today",
   "dependencies": {
     "@types/classnames": "^2.2.3",
     "@types/moment-timezone": "^0.5.4",
