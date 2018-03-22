@@ -11,8 +11,10 @@
     2. [X] Next change day section
 9. Implement client-side routing
     1. [X] Route for open/close 
-    1. Read main section xDay from URL route
+    1. [X] Read main section xDay from URL route
     2. Bottom section click to main section flow using routing
+1. Change text copy based on date loaded as xDay.
+2. Add "also/but" to next day panel.
 5. Allow date picker to go to particular date
 6. Weekly view
 7. Monthly view
