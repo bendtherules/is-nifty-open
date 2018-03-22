@@ -21,6 +21,14 @@ export class OpenXDay extends React.Component<OpenXDayProps, {}> {
 
     constructor(props: OpenXDayProps) {
         super(props);
+        this.updateFromProps(props);
+    }
+
+    componentWillUpdate(nextProps: OpenXDayProps, nextState: {}) {
+        this.updateFromProps(nextProps);
+    }
+
+    updateFromProps(props: OpenXDayProps) {
         this.question = props.question;
         this.xDay = props.xDay;
         this.allHolidays = props.allHolidays;

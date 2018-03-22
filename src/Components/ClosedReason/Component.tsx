@@ -9,9 +9,16 @@ export class ClosedReason extends React.Component<ObjectWithHoliday, {}> {
 
     constructor(props: ObjectWithHoliday) {
         super(props);
-        this.holiday = props.holiday;
+        this.updateFromProps(props);
     }
 
+    componentWillUpdate(nextProps: ObjectWithHoliday, nextState: {}) {
+        this.updateFromProps(nextProps);
+    }
+
+    updateFromProps(props: ObjectWithHoliday) {
+        this.holiday = props.holiday;
+    }
     render() {
         return (
             <div className="ClosedReason">

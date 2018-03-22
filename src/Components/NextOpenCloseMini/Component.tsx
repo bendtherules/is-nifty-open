@@ -19,6 +19,14 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
 
     constructor(props: NextOpenCloseMiniProps) {
         super(props);
+        this.updateFromProps(props);
+    }
+
+    componentWillUpdate(nextProps: NextOpenCloseMiniProps, nextState: {}) {
+        this.updateFromProps(nextProps);
+    }
+
+    updateFromProps(props: NextOpenCloseMiniProps) {
         this.xDay = props.xDay;
         this.openOrClose = props.openOrClose;
         this.allHolidays = props.allHolidays;

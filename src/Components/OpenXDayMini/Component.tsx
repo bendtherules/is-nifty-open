@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment-timezone';
 import * as classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import "./Component.css";
 import { HolidayList } from '../../Data';
 import { Utils, HolidayAnswer } from "../../Utils";
@@ -20,11 +21,19 @@ export class OpenXDayMini extends React.Component<OpenXDayMiniProps, {}> {
 
     constructor(props: OpenXDayMiniProps) {
         super(props);
+        this.updateFromProps(props);
+    }
+    
+    componentWillUpdate(nextProps: OpenXDayMiniProps, nextState: {}) {
+        this.updateFromProps(nextProps);
+    }
+    
+    updateFromProps(props: OpenXDayMiniProps) {
         this.xDay = props.xDay;
         this.dateDescription = props.dateDescription;
         this.allHolidays = props.allHolidays;
-
-        this.answer = Utils.getHolidayAnswerOnDate(this.xDay, this.allHolidays);
+    
+        this.answer = Utils.getHolidayAnswerOnDate(this.xDay, this.allHolidays);    
     }
 
     render() {
@@ -32,14 +41,16 @@ export class OpenXDayMini extends React.Component<OpenXDayMiniProps, {}> {
 
         return (
             <div className={"OpenXDayMini"} >
-                <div className="OpenXDayMini-inner">
-                    <div className={classnames([textColorClass, "openOrCloseText"])}>
-                        {this.answer.open ? "Open" : "Closed"}
+                <Link to={`./${this.xDay.format("YYYY-MM-DD")}`}>
+                    <div className="OpenXDayMini-inner">
+                        <div className={classnames([textColorClass, "openOrCloseText"])}>
+                            {this.answer.open ? "Open" : "Closed"}
+                        </div>
+                        <div className="dateDescription">
+                            {this.dateDescription}
+                        </div>
                     </div>
-                    <div className="dateDescription">
-                        {this.dateDescription}
-                    </div>
-                </div>
+                </Link>
             </div>
         );
     }
