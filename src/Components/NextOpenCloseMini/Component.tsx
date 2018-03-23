@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment-timezone';
+import { Link } from 'react-router-dom';
 import "./Component.css";
 import { HolidayList } from '../../Data';
 import { Utils, OpenOrClose } from "../../Utils";
@@ -43,21 +44,19 @@ export class NextOpenCloseMini extends React.Component<NextOpenCloseMiniProps, {
         return this.openOrClose === OpenOrClose.Open ? "green-text" : "red-text";
     }
 
-    renderDate(): JSX.Element[] {
+    renderDate(): JSX.Element {
         const tmpNextDate = this.nextOpenOrCloseDate as moment.Moment;
         var nextDateString = tmpNextDate.from(this.xDay);
-        return [
-            (
-                <div className="openCloseDecription" key="title">
-                    Next <span className={this.getOpeningClosingClassName()}>{this.getOpeningClosingString()}</span>
-                </div>
-            ),
-            (
-                <div className="dateDescription" key="subTitle">
-                    {nextDateString}
-                </div>
-            )
-        ];
+        return (
+            <Link to={`./${tmpNextDate.format("YYYY-MM-DD")}`}>
+            <div className="openCloseDecription" key="title">
+                Next <span className={this.getOpeningClosingClassName()}>{this.getOpeningClosingString()}</span>
+            </div>
+            <div className="dateDescription" key="subTitle">
+                {nextDateString}
+            </div>
+        </Link>);
+
     }
 
     renderNotFound(): JSX.Element[] {
