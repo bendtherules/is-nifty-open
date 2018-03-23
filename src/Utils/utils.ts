@@ -12,6 +12,18 @@ export enum OpenOrClose {
     Close = 'closed'
 }
 
+export const enum OpenOrCloseOrClosed {
+    Open = "open",
+    Close = "close",
+    Closed = "closed"
+}
+
+export const enum DayNames {
+    today = "today",
+    tomorrow = "tomorrow",
+    yesterday = "yesterday",
+}
+
 export class Utils {
     static invertOpenOrClose(openOrClose: OpenOrClose) {
         return (openOrClose === OpenOrClose.Open) ? OpenOrClose.Close : OpenOrClose.Open;
@@ -108,5 +120,30 @@ export class Utils {
         }
 
         return undefined;
+    }
+
+    static mapAbsoluteDateToRelativeDayName(xDay: moment.Moment): DayNames | undefined {
+        // Redirect to relative if day is within +-1 day of today
+        let tmpToday = Utils.createTodayDateInIndiaTZ();
+        let tmpTomorrow = tmpToday.clone().add(1, "d");
+        let tmpYesterday = tmpToday.clone().subtract(1, "d");
+
+        if (Utils.checkSameDayInSameTZ(xDay, tmpToday)) {
+
+            return DayNames.today;
+
+        } else if (Utils.checkSameDayInSameTZ(xDay, tmpTomorrow)) {
+
+            return DayNames.tomorrow;
+
+        } else if (Utils.checkSameDayInSameTZ(xDay, tmpYesterday)) {
+
+            return DayNames.yesterday;
+
+        } else {
+
+            return undefined;
+
+        }
     }
 }

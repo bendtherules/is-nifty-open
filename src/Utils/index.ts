@@ -1,1 +1,1 @@
-export { Utils, HolidayAnswer, OpenOrClose } from "./utils";
+export { Utils, HolidayAnswer, OpenOrClose, OpenOrCloseOrClosed, DayNames } from "./utils";

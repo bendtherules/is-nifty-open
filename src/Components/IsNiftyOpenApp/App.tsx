@@ -6,46 +6,9 @@ import { OpenXDay } from '../OpenXDay';
 import { OpenXDayMini } from '../OpenXDayMini';
 import { NextOpenCloseMini } from '../NextOpenCloseMini';
 import { allHolidays } from '../../Data';
-import { Utils, OpenOrClose } from "../../Utils";
-
-const enum OpenOrCloseOrClosed {
-  Open = "open",
-  Close = "close",
-  Closed = "closed"
-}
-
-const enum DayNames {
-  today = "today",
-  tomorrow = "tomorrow",
-  yesterday = "yesterday",
-}
+import { Utils, OpenOrClose, OpenOrCloseOrClosed, DayNames } from "../../Utils";
 
 class IsNiftyOpenApp extends React.Component {
-  static mapAbsoluteDateToRelativeDayName(xDay: moment.Moment): DayNames | undefined {
-    // Redirect to relative if day is within +-1 day of today
-    let tmpToday = Utils.createTodayDateInIndiaTZ();
-    let tmpTomorrow = tmpToday.clone().add(1, "d");
-    let tmpYesterday = tmpToday.clone().subtract(1, "d");
-
-    if (Utils.checkSameDayInSameTZ(xDay, tmpToday)) {
-
-      return DayNames.today;
-
-    } else if (Utils.checkSameDayInSameTZ(xDay, tmpTomorrow)) {
-
-      return DayNames.tomorrow;
-
-    } else if (Utils.checkSameDayInSameTZ(xDay, tmpYesterday)) {
-
-      return DayNames.yesterday;
-
-    } else {
-
-      return undefined;
-
-    }
-  }
-
   calcOpenOrCloseForOpenCloseMini(xDay: moment.Moment) {
     var isTodayEventHoliday = Utils.getEventHolidayOnDate(xDay, allHolidays) !== undefined;
 
@@ -53,7 +16,7 @@ class IsNiftyOpenApp extends React.Component {
   }
 
   returnRedirectToDayNamePathIfPossible(openOrClose: OpenOrClose, xDay: moment.Moment): JSX.Element | undefined {
-    var relativeDayName = IsNiftyOpenApp.mapAbsoluteDateToRelativeDayName(xDay);
+    var relativeDayName = Utils.mapAbsoluteDateToRelativeDayName(xDay);
     if (relativeDayName !== undefined) {
       return this.redirectToOpenRelativeDay(openOrClose, relativeDayName);
     } else {
