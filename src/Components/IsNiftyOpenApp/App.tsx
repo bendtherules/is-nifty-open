@@ -8,17 +8,57 @@ import { NextOpenCloseMini } from '../NextOpenCloseMini';
 import { allHolidays } from '../../Data';
 import { Utils, OpenOrClose } from "../../Utils";
 
-enum OpenOrCloseOrClosed {
+const enum OpenOrCloseOrClosed {
   Open = "open",
   Close = "close",
   Closed = "closed"
 }
 
+const enum DayNames {
+  today = "today",
+  tomorrow = "tomorrow",
+  yesterday = "yesterday",
+}
+
 class IsNiftyOpenApp extends React.Component {
+  static mapAbsoluteDateToRelativeDayName(xDay: moment.Moment): DayNames | undefined {
+    // Redirect to relative if day is within +-1 day of today
+    let tmpToday = Utils.createTodayDateInIndiaTZ();
+    let tmpTomorrow = tmpToday.clone().add(1, "d");
+    let tmpYesterday = tmpToday.clone().subtract(1, "d");
+
+    if (Utils.checkSameDayInSameTZ(xDay, tmpToday)) {
+
+      return DayNames.today;
+
+    } else if (Utils.checkSameDayInSameTZ(xDay, tmpTomorrow)) {
+
+      return DayNames.tomorrow;
+
+    } else if (Utils.checkSameDayInSameTZ(xDay, tmpYesterday)) {
+
+      return DayNames.yesterday;
+
+    } else {
+
+      return undefined;
+
+    }
+  }
+
   calcOpenOrCloseForOpenCloseMini(xDay: moment.Moment) {
     var isTodayEventHoliday = Utils.getEventHolidayOnDate(xDay, allHolidays) !== undefined;
 
     return isTodayEventHoliday ? OpenOrClose.Open : OpenOrClose.Close;
+  }
+
+  returnRedirectToDayNamePathIfPossible(openOrClose: OpenOrClose, xDay: moment.Moment): JSX.Element | undefined {
+    var relativeDayName = IsNiftyOpenApp.mapAbsoluteDateToRelativeDayName(xDay);
+    if (relativeDayName !== undefined) {
+      return this.redirectToOpenRelativeDay(openOrClose, relativeDayName);
+    } else {
+      return undefined;
+    }
   }
 
   renderAllPanels(questionString: OpenOrCloseOrClosed, dateText: string): React.ReactElement<{}> {
@@ -31,36 +71,39 @@ class IsNiftyOpenApp extends React.Component {
 
     let xDay: moment.Moment, xPlusOneDay: moment.Moment;
     {
-      const enum DateNames {
-        today = "today",
-        tomorrow = "tomorrow",
-        yesterday = "yesterday",
-      }
-
       if (dateText === undefined) {
-        return this.redirectToOpenToday(question);
+        return this.redirectToOpenRelativeDay(question);
       }
       dateText = dateText.toLowerCase();
 
       switch (dateText) {
-        case DateNames.today:
+        case DayNames.today:
           xDay = Utils.createTodayDateInIndiaTZ();
           break;
 
-        case DateNames.tomorrow:
+        case DayNames.tomorrow:
           xDay = Utils.createTodayDateInIndiaTZ().add(1, "d");
           break;
 
-        case DateNames.yesterday:
+        case DayNames.yesterday:
           xDay = Utils.createTodayDateInIndiaTZ().subtract(1, "d");
           break;
 
         default:
           let possiblyXDay = Utils.createSomeDateInIndiaTZ(dateText);
           if (possiblyXDay.isValid()) {
+            {
+              // Redirect to day name path if possible
+              let redirectDayNamePath = this.returnRedirectToDayNamePathIfPossible(question, possiblyXDay);
+              if (redirectDayNamePath !== undefined) {
+                return redirectDayNamePath;
+              }
+            }
+
+            // Else continue
             xDay = possiblyXDay;
           } else {
-            return this.redirectToOpenToday(question);
+            return this.redirectToOpenRelativeDay(question);
           }
           break;
       }
@@ -99,8 +142,8 @@ class IsNiftyOpenApp extends React.Component {
     );
   }
 
-  redirectToOpenToday(question: OpenOrClose = OpenOrClose.Open) {
-    return (<Redirect to={`/${question}/today`} />);
+  redirectToOpenRelativeDay(question: OpenOrClose = OpenOrClose.Open, dayName: DayNames = DayNames.today): JSX.Element {
+    return (<Redirect to={`/${question}/${dayName}`} />);
   }
 
   render() {
@@ -116,7 +159,7 @@ class IsNiftyOpenApp extends React.Component {
                 props.match.params.dateText);
             }}
           />
-          {this.redirectToOpenToday()}
+          {this.redirectToOpenRelativeDay()}
         </Switch>
       </div>
     );
