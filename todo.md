@@ -12,12 +12,12 @@
 9. Implement client-side routing
     1. [X] Route for open/close 
     1. [X] Read main section xDay from URL route
-    2. Bottom section click to main section flow using routing
+    2. [X] Bottom section click to main section flow using routing
 1. Change text copy based on date loaded as xDay.
 2. Add "also/but" to next day panel.
-5. Allow date picker to go to particular date
-6. Weekly view
-7. Monthly view
+5. Allow date picker to go to particular date ??
+6. Weekly view ??
+7. Monthly view ??
 10. [X] Host at isnifty.com/open
 5. Fix filename improper casing
 5. Load data from backend
