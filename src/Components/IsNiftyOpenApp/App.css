@@ -68,16 +68,16 @@
 
 .App .OpenXPlusOneDay-container {
   float: left;
-  width: 40%;
+  width: 50%;
   height: 100%;
 }
 
 .App .OpenXPlusOneDay-container .OpenXDayMini {
-  border-right: 5px solid rgba(255, 255, 255, 0.6);
+  border-right: 5px solid rgba(255, 255, 255, 0.6 );
 }
 
 .App .NextOpenClose-container {
   float: right;
-  width: 60%;
+  width: 50%;
   height: 100%;
 }
