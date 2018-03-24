@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import * as moment from 'moment-timezone';
+import GithubCorner from 'react-github-corner';
 import './App.css';
+import { DateSwitchBar } from '../DateSwitchBar';
 import { OpenXDay } from '../OpenXDay';
 import { OpenXDayMini } from '../OpenXDayMini';
 import { NextOpenCloseMini } from '../NextOpenCloseMini';
@@ -76,6 +78,18 @@ class IsNiftyOpenApp extends React.Component {
 
     return (
       <div className="IsNiftyOpenApp">
+        <div className="top-bar">
+          <GithubCorner
+            href="https://github.com/bendtherules/is-nifty-open"
+            bannerColor="rgb(64, 64, 64)"
+            octoColor="rgba(255, 255, 255, 0.9)"
+            size={80}
+            direction="right"
+          />
+          <div className="DateSwitchBar-container">
+            <DateSwitchBar />
+          </div>
+        </div>
         <div className="upper-half">
           <div className="OpenXDay-container">
             <OpenXDay

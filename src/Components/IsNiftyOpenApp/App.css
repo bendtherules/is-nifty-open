@@ -53,14 +53,22 @@
   height: 100%;
 }
 
+.App .top-bar {
+  z-index: 1;
+}
+
 .App .upper-half {
   width: 100%;
   height: 80vh;
+  position: relative;
+  z-index: -1;
 }
 
 .App .lower-half {
   width: 100%;
   height: 20vh;
+  
+  z-index: -1;
 }
 
 .App .OpenXDayMini, .App .NextOpenCloseMini {
@@ -79,11 +87,23 @@
 }
 
 .App .OpenXPlusOneDay-container .OpenXDayMini {
-  border-right: 5px solid rgba(255, 255, 255, 0.6);
+  border-right: 2.5px solid rgba(255, 255, 255, 0.6);
+}
+
+.App .NextOpenClose-container .NextOpenCloseMini {
+  border-left: 2.5px solid rgba(255, 255, 255, 0.6);
 }
 
 .App .NextOpenClose-container {
   float: right;
   width: 50%;
   height: 100%;
+}
+
+.App .DateSwitchBar-container {
+  position: absolute;
+  top: 4vh;
+  left: 50%;
+  width: 75%;
+  transform: translate(-50%, 0);
 }

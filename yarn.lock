@@ -4911,6 +4911,10 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-github-corner@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-github-corner/-/react-github-corner-2.1.0.tgz#559363f5407e932db47e942f639d165e81827be4"
+
 react-router-dom@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
