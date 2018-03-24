@@ -83,7 +83,7 @@ class IsNiftyOpenApp extends React.Component {
             href="https://github.com/bendtherules/is-nifty-open"
             bannerColor="rgb(64, 64, 64)"
             octoColor="rgba(255, 255, 255, 0.9)"
-            size={80}
+            size={70}
             direction="right"
           />
           <div className="DateSwitchBar-container">
