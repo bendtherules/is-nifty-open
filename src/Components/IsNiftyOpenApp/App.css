@@ -102,7 +102,7 @@
 
 .App .DateSwitchBar-container {
   position: absolute;
-  top: 4vh;
+  top: 3vmax;
   left: 50%;
   width: 100%;
   transform: translate(-50%, 0);
