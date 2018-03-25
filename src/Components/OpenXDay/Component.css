@@ -34,7 +34,7 @@
     position: absolute;
     text-align: center;
     top: 50%;
-    right: 0.5em;
+    left: 0.5em;
     transform: translate(0%, -50%);
 }
 

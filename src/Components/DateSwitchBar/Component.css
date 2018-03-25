@@ -6,9 +6,9 @@
 
 .icon {
     position: absolute;
-    left: 2em;
+    left: 3.5vh;
     top: 0;
-    transform: translate(-50%, 0);
+
     width: 3.5vh;
     height: 3.5vh;
     border: .15em solid rgba(255, 255, 255, 0.75);
@@ -18,5 +18,5 @@
 }
 
 .icon-rotated {
-    transform: translate(-50%, 0) rotate(-135deg);
+    transform: rotate(-135deg);
 }
