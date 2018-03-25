@@ -6,21 +6,21 @@ export class DateSwitchBar extends React.Component<{}, { rotated: boolean }> {
 
     constructor(props: {}) {
         super(props);
-        this.updateFromProps(props);
-
         this.state = { rotated: false };
+
+        this.willBeCreated(props);
     }
 
     componentDidMount() {
+        this.afterUpdated();
+    }
+
+    willBeCreated(props: {}) {
+        this.setState({ rotated: false });
+    }
+
+    afterUpdated() {
         setTimeout(() => { this.setState({ rotated: true }); }, 1000);
-    }
-
-    componentWillUpdate(nextProps: {}, nextState: {}) {
-        this.updateFromProps(nextProps);
-    }
-
-    updateFromProps(props: {}) {
-        // do nothing for now
     }
 
     render() {
