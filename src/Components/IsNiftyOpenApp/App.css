@@ -104,6 +104,6 @@
   position: absolute;
   top: 4vh;
   left: 50%;
-  width: 75%;
+  width: 100%;
   transform: translate(-50%, 0);
 }
