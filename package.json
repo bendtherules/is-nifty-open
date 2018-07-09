@@ -4,9 +4,6 @@
   "private": true,
   "homepage": "http://isnifty.com/",
   "dependencies": {
-    "@types/classnames": "^2.2.3",
-    "@types/moment-timezone": "^0.5.4",
-    "@types/react-router-dom": "^4.2.4",
     "classnames": "^2.2.5",
     "linq": "^3.0.9",
     "moment": "^2.21.0",
@@ -24,6 +21,9 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
+    "@types/moment-timezone": "^0.5.4",
+    "@types/react-router-dom": "^4.2.4",
     "@types/jest": "^22.2.0",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.34",
