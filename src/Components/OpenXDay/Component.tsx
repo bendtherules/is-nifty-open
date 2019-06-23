@@ -44,7 +44,7 @@ export class OpenXDay extends React.Component<OpenXDayProps, {}> {
             <div className={classnames([bgColorClass, "OpenXDay"])} >
                 <div className="question">
                     <span>
-                        Is Nifty50 {this.question} today?
+                        Is Flipkart {this.question} today?
                     </span>
                 </div>
                 <div className="answerComposite">
