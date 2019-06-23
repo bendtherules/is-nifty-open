@@ -115,6 +115,11 @@ class IsNiftyOpenApp extends React.Component {
             />
           </div>
         </div>
+        <div className="disclaimer">
+          {`This data is taken from Karanataka ETV Flipkart holidays list,
+            but doesn't include optional holidays.
+            There is no gurantee that this data is correct or will be kept updated.`}
+        </div>
       </div>
     );
   }
