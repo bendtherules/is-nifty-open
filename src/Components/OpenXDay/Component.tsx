@@ -43,8 +43,17 @@ export class OpenXDay extends React.Component<OpenXDayProps, {}> {
         return (
             <div className={classnames([bgColorClass, "OpenXDay"])} >
                 <div className="question">
-                    <span>
-                        Is Flipkart {this.question} today?
+                    <span className="question-text">
+                        Is&nbsp;
+                        <span className="company-name">
+                            Flipkart
+                            <div className="disclaimer">
+                                {`This data is taken from Karanataka ETV Flipkart holidays list,
+                                but doesn't include optional holidays.
+                                There is no gurantee that this data is correct or will be kept updated.`}
+                            </div>
+                        </span>
+                        &nbsp;{this.question} today?
                     </span>
                 </div>
                 <div className="answerComposite">
