@@ -9,7 +9,7 @@
     "moment": "^2.21.0",
     "moment-timezone": "^0.5.14",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.2.1",
     "react-github-corner": "^2.1.0",
     "react-router-dom": "^4.2.2",
     "react-scripts-ts": "2.13.0"
