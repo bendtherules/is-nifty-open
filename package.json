@@ -6,7 +6,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "linq": "^3.0.9",
-    "moment": "^2.21.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.14",
     "react": "^16.2.0",
     "react-dom": "^16.2.1",
